@@ -18,4 +18,5 @@ setup(
     author_email="micktwomey+iso8601@gmail.com",
     url="http://code.google.com/p/pyiso8601/",
     packages=["iso8601"],
+    license="MIT",
 )
