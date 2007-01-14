@@ -5,8 +5,8 @@ except ImportError:
 
 long_description="""Simple module to parse ISO 8601 dates
 
-This module parses the most common forms of ISO 8601 date strings into
-datetime objects.
+This module parses the most common forms of ISO 8601 date strings (e.g.
+2007-01-14T20:34:22+00:00) into datetime objects.
 """
 
 setup(
