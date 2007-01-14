@@ -1,0 +1,13 @@
+A simple package to deal with ISO 8601 date time formats.
+
+Currently this covers only the most common date formats encountered, not all of ISO 8601 is handled.
+
+Currently the following formats are handled:
+
+* 2006-01-01T00:00:00Z
+* 2006-01-01T00:00:00[+-]00:00
+
+References:
+
+* http://www.cl.cam.ac.uk/~mgk25/iso-time.html - simple overview
+* http://hydracen.com/dx/iso8601.htm - more detailed enumeration of valid formats.
