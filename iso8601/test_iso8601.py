@@ -59,3 +59,20 @@ def test_parse_invalid_date2():
         pass
     else:
         assert 1 == 2
+
+def test_parse_no_timezone():
+    """issue 4 - Handle datetime string without timezone
+    
+    This tests what happens when you parse a date with no timezone. While not
+    strictly correct this is quite common. I'll assume UTC for the time zone
+    in this case.
+    """
+    d = iso8601.parse_date("2007-01-01T08:00:00")
+    assert d.year == 2007
+    assert d.month == 1
+    assert d.day == 1
+    assert d.hour == 8
+    assert d.minute == 0
+    assert d.second == 0
+    assert d.microsecond == 0
+    assert d.tzinfo == iso8601.UTC

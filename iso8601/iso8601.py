@@ -59,12 +59,17 @@ class FixedOffset(tzinfo):
     def __repr__(self):
         return "<FixedOffset %r>" % self.__name
 
-def parse_timezone(tzstring):
+def parse_timezone(tzstring, default_timezone=UTC):
     """Parses ISO 8601 time zone specs into tzinfo offsets
     
     """
     if tzstring == "Z":
-        return UTC
+        return default_timezone
+    # This isn't strictly correct, but it's common to encounter dates without
+    # timezones so I'll assume the default (which defaults to UTC).
+    # Addresses issue 4.
+    if tzstring is None:
+        return default_timezone
     m = TIMEZONE_REGEX.match(tzstring)
     prefix, hours, minutes = m.groups()
     hours, minutes = int(hours), int(minutes)
@@ -73,9 +78,13 @@ def parse_timezone(tzstring):
         minutes = -minutes
     return FixedOffset(hours, minutes, tzstring)
 
-def parse_date(datestring):
+def parse_date(datestring, default_timezone=UTC):
     """Parses ISO 8601 dates into datetime objects
     
+    The timezone is parsed from the date string. However it is quite common to
+    have dates without a timezone (not strictly correct). In this case the
+    default timezone specified in default_timezone is used. This is UTC by
+    default.
     """
     if not isinstance(datestring, basestring):
         raise ParseError("Expecting a string %r" % datestring)
@@ -83,7 +92,7 @@ def parse_date(datestring):
     if not m:
         raise ParseError("Unable to parse date string %r" % datestring)
     groups = m.groupdict()
-    tz = parse_timezone(groups["timezone"])
+    tz = parse_timezone(groups["timezone"], default_timezone=UTC)
     if groups["fraction"] is None:
         groups["fraction"] = 0
     return datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]),
