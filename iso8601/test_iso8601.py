@@ -30,6 +30,20 @@ def test_parse_date_fraction():
     assert d.microsecond == 123
     assert d.tzinfo == iso8601.UTC
 
+def test_parse_date_fraction_2():
+    """From bug 6
+    
+    """
+    d = iso8601.parse_date("2007-5-7T11:43:55.328Z'")
+    assert d.year == 2007
+    assert d.month == 5
+    assert d.day == 7
+    assert d.hour == 11
+    assert d.minute == 43
+    assert d.second == 55
+    assert d.microsecond == 328
+    assert d.tzinfo == iso8601.UTC
+
 def test_parse_date_tz():
     d = iso8601.parse_date("2006-10-20T15:34:56.123+02:30")
     assert d.year == 2006
