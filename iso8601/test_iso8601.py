@@ -27,7 +27,7 @@ def test_parse_date_fraction():
     assert d.hour == 15
     assert d.minute == 34
     assert d.second == 56
-    assert d.microsecond == 123
+    assert d.microsecond == 123000
     assert d.tzinfo == iso8601.UTC
 
 def test_parse_date_fraction_2():
@@ -41,7 +41,7 @@ def test_parse_date_fraction_2():
     assert d.hour == 11
     assert d.minute == 43
     assert d.second == 55
-    assert d.microsecond == 328
+    assert d.microsecond == 328000
     assert d.tzinfo == iso8601.UTC
 
 def test_parse_date_tz():
@@ -52,7 +52,7 @@ def test_parse_date_tz():
     assert d.hour == 15
     assert d.minute == 34
     assert d.second == 56
-    assert d.microsecond == 123
+    assert d.microsecond == 123000
     assert d.tzinfo.tzname(None) == "+02:30"
     offset = d.tzinfo.utcoffset(None)
     assert offset.days == 0

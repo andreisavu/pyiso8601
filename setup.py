@@ -11,6 +11,12 @@ This module parses the most common forms of ISO 8601 date strings (e.g.
 Changes
 =======
 
+0.1.3
+-----
+
+* Fixed the microsecond handling, the generated microsecond values were 
+  way too small. Fixes issue 9.
+
 0.1.2
 -----
 
