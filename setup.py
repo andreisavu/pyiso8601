@@ -8,6 +8,11 @@ long_description="""Simple module to parse ISO 8601 dates
 This module parses the most common forms of ISO 8601 date strings (e.g.
 2007-01-14T20:34:22+00:00) into datetime objects.
 
+>>> import iso8601
+>>> iso8601.parse_date("2007-01-25T12:00:00Z")
+datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.iso8601.Utc ...>)
+>>>
+
 Changes
 =======
 
