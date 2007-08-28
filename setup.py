@@ -41,7 +41,7 @@ Changes
 
 setup(
     name="iso8601",
-    version="0.1.2",
+    version="0.1.3",
     description=long_description.split("\n")[0],
     long_description=long_description,
     author="Michael Twomey",
