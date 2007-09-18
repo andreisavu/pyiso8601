@@ -16,6 +16,12 @@ datetime.datetime(2007, 1, 25, 12, 0, tzinfo=<iso8601.iso8601.Utc ...>)
 Changes
 =======
 
+0.1.4
+-----
+
+* The default_timezone argument wasn't being passed through correctly,
+  UTC was being used in every case. Fixes issue 10.
+
 0.1.3
 -----
 

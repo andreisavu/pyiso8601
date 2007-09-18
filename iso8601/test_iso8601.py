@@ -91,6 +91,11 @@ def test_parse_no_timezone():
     assert d.microsecond == 0
     assert d.tzinfo == iso8601.UTC
 
+def test_parse_no_timezone_different_default():
+    tz = iso8601.FixedOffset(2, 0, "test offset")
+    d = iso8601.parse_date("2007-01-01T08:00:00", default_timezone=tz)
+    assert d.tzinfo == tz
+
 def test_space_separator():
     """Handle a separator other than T
     

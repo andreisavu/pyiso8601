@@ -92,7 +92,7 @@ def parse_date(datestring, default_timezone=UTC):
     if not m:
         raise ParseError("Unable to parse date string %r" % datestring)
     groups = m.groupdict()
-    tz = parse_timezone(groups["timezone"], default_timezone=UTC)
+    tz = parse_timezone(groups["timezone"], default_timezone=default_timezone)
     if groups["fraction"] is None:
         groups["fraction"] = 0
     else:
