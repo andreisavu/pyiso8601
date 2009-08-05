@@ -93,10 +93,21 @@ def parse_date(datestring, default_timezone=UTC):
         raise ParseError("Unable to parse date string %r" % datestring)
     groups = m.groupdict()
     tz = parse_timezone(groups["timezone"], default_timezone=default_timezone)
+
+    if groups['hour'] is None: 
+        groups['hour'] = '0'
+    
+    if groups['minute'] is None:
+        groups['minute'] = '0'
+    
+    if groups['second'] is None:
+        groups['second'] = '0'
+    
     if groups["fraction"] is None:
         groups["fraction"] = 0
     else:
         groups["fraction"] = int(float("0.%s" % groups["fraction"]) * 1e6)
+    
     return datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]),
         int(groups["hour"]), int(groups["minute"]), int(groups["second"]),
         int(groups["fraction"]), tz)
